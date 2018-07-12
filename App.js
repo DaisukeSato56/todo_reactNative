@@ -17,6 +17,8 @@ import {
   ScrollView,
 } from 'react-native';
 
+import TodoList from './todoList';
+
 type Props = {};
 export default class App extends Component<Props> {
   state = {
@@ -51,16 +53,7 @@ export default class App extends Component<Props> {
         >
           <Text style={styles.addButtonText}>ADD</Text>
         </TouchableOpacity>
-
-        <ScrollView style={styles.scrollView}>
-          {
-            this.state.todos.map((todo, index) => (
-              <View key={todo+index} style={styles.todoContainer}>
-                <Text>{todo}</Text>
-              </View>
-            ))
-          }
-        </ScrollView>
+        <TodoList todos={this.state.todos} />
       </View>
     );
   }
@@ -86,11 +79,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
   },
-  scrollView: {
-    backgroundColor: "#DDD"
-  },
-  todoContainer: {
-    backgroundColor: "#FFF",
-    padding: 10,
-  }
 });
